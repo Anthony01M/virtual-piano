@@ -1,0 +1,63 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #333; /* yeah, I know, it's not black but how else will you see the black keys lol */
+  overflow: hidden;
+}
+
+.piano {
+  display: flex;
+  position: relative;
+  width: 90vw;
+  max-width: 1200px;
+}
+
+.key {
+  width: 2.5%;
+  height: 150px;
+  margin: 0;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.white {
+  background-color: white;
+  z-index: 1;
+}
+
+.black {
+  background-color: black;
+  height: 100px;
+  width: 1.5%;
+  position: absolute;
+  margin-left: -0.75%;
+  z-index: 2;
+}
+
+.key[data-note^="A"],
+.key[data-note^="B"],
+.key[data-note^="C"],
+.key[data-note^="D"],
+.key[data-note^="E"],
+.key[data-note^="F"],
+.key[data-note^="G"] {
+  position: relative;
+}
+
+.key[data-note^="A"] ~ .key[data-note^="Bb"],
+.key[data-note^="B"] ~ .key[data-note^="C"],
+.key[data-note^="D"] ~ .key[data-note^="Eb"],
+.key[data-note^="E"] ~ .key[data-note^="F"],
+.key[data-note^="G"] ~ .key[data-note^="Ab"] {
+  margin-left: -1.25%;
+}
+
+.key:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
